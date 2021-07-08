@@ -31,14 +31,24 @@
       }
       </style>
 
+      <script>
+                                                                                                                                            
+      </script>
   </head>
 
   <body>
+  <?php
+    
+    ?>
+
     <?php
+      $search_word = $_GET['search'];
       $jb_conn = mysqli_connect( 'localhost', 'athenathdus', 'x465011', 'korea' );
       $jb_sql = "SELECT * FROM zipcode LIMIT 100; ";
       $jb_result = mysqli_query( $jb_conn, $jb_sql );
-      ?>
+     ?>
+
+   
     <div class="container-fluid text-center" style="margin-top: 250px;">
         <div id = "content" class="row">
            <div class="col-sm-3">
