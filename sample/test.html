@@ -1,10 +1,3 @@
-<?php
-$conn = mysqli_connect( 'localhost', 'athenathdus', 'x465011', 'korea' );
-$sql = "SELECT * FROM zipcode; ";
-$result = mysqli_query( $conn, $sql );
-?>
-<!DOCTYPE>
-
 <html>
   <head>
       <title>Data Search</title>
@@ -15,80 +8,97 @@ $result = mysqli_query( $conn, $sql );
       <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <style>
+  
+    <script>
+
+$('#but').click(function(){
+
+  $.ajax({
+        url:"test.php",
+        Type:"POST",
+        data: $("form").serialize(),
+        dataType:"json",
+  }).done(function(data) {
+
+    var html = "";
+			for(var i = 0; i<data.seq.length; i++){
+				html += "<tr>";
+				html += "<td>Json - "+data.ZIPCODE[i]+"</td>";
+				html += "<td>"+data.SIDO[i]+"</td>";
+				html += "<td>"+data.GUGUN[i]+"</td>";
+				html += "<td>"+data.DONG[i]+"</td>";
+        html += "<td>"+data.BUNJI[i]+"</td>";
+        html += "<td>"+data.RI[i]+"</td>";
+				html += "</tr>";
+  }
+
+  $("#input_data").html(html);
+
+    
+  });
+});
+
+</script>
+
+<style>
         
-      #footer{
-        
-        background-color: rgb(174, 198, 207);
-        left:0px;
-        bottom:0px; 
-        width:100%; 
-        padding: 35px;
-        font-size:20px;
-        text-align:center;
-      }
+  #footer{
+    
+    background-color: rgb(174, 198, 207);
+    left:0px;
+    bottom:0px; 
+    width:100%; 
+    padding: 35px;
+    font-size:20px;
+    text-align:center;
+  }
 
-      #header{
-        
-        background-color: rgb(174, 198, 207);
-        left:0px;
-        bottom:0px; 
-        width:100%; 
-        padding: 20px;
-        font-size:20px;
-        text-align:center;
-      }
+  #header{
+    
+    background-color: rgb(174, 198, 207);
+    left:0px;
+    bottom:0px; 
+    width:100%; 
+    padding: 20px;
+    font-size:20px;
+    text-align:center;
+  }
 
-      #inputbox{
-        width: 450px;
-        height: 50px;
-        font-size: 30px;
-      }
-      </style>
+  #inputbox{
+    width: 450px;
+    height: 50px;
+    font-size: 30px;
+  }
+  </style>
+</head>
 
-      <script>
-        var formData = jQuery('#form_test').serializeArray(); 
-            var f = document.createElement('form'); 
-// g=config&pmode=config.form.update 여기서 g/pmode 는  이미 form_test 라는 폼에 있으리라는 전제조건 하입니다.
-            $("#bt_test").on('click',function () { 
-                $.ajax({ 
-                    url: "/page/index.php", 
-                    type: "POST", 
-                dataType:'json',
-                    data: formData, 
-                    success: function (r) { 
-                       console.log(r);
-                       console.log(r.test);
-                       console.log(r.test2);                    }, 
-                    error: function (jqXHR, textStatus, errorThrown) { 
-                    } 
-                }) 
-            }); 
+<div style='background-color:linen'>
+<div id="header">2021 Summer intership project</div>
 
-      </script>
-    </head>
+<body>
+<div class="container-fluid text-center" style="margin-top: 150px;">
+    <div id = "content" class="row">
+       <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+        <form method="POST" action="<?=$_SERVER["PHP_SELF"]?>">
+        <h2><b>Search Address</b></h2><br>
+        <input id= "inputbox" type="text" name="s">
+        <button id="no2">AJAX</button>
 
-    <div style='background-color:linen'>
-    <div id="header">2021 Summer intership project</div>
-   
- <body>
-    <div class="container-fluid text-center" style="margin-top: 150px;">
-        <div id = "content" class="row">
-           <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-            <form method="POST" action="<?=$_SERVER["PHP_SELF"]?>">
-            <h2><b>Search Address</b></h2><br>
-            <input id= "inputbox" type="text" name="s">
-           <br>
-          </form>
-           </div>
-           <div class="col-sm-3">
-            <br><br><br>
-         </div>
+
+       
+       <br>
+      </form>
+       </div>
+       <div class="col-sm-3">
+        <br><br><br>
      </div>
+ </div>
+  
+    <br><br>
+<div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
+</body></div>
 
-        <br><br>
-    <div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
- </body></div>
+</body>
 </html>

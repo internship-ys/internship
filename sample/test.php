@@ -1,73 +1,29 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>Employees</title>
-      <title>Data Search</title>
-      <meta charset="utf-8">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<?php
 
-      <style>
-        
-      #footer{
-        
-        background-color: skyblue;
-        left:0px;
-        bottom:0px; 
-        width:100%; 
-        padding: 10px;
-        font-size:20px;
-        text-align:center;
-      }
-      #inputbox{
-        width: 450px;
-        height: 50px;
-        font-size: 30px;
-      }
-      </style>
+$connect = mysqli_connect("localhost", "root", "x465011","korea");
+$procedure = "SELECT * FROM zipcode WHERE MATCH(search) AGAINST('".$s."*' IN BOOLEAN MODE) limit 15";
+ 
+mysqli_query($connect,$procedure);
 
-      <script>
-                                                                                                                                            
-      </script>
-  </head>
+$db_ZIPCODE = array();
+$db_SIDO = array();
+$db_GUGUN = array();
+$db_DONG = array();
+$db_BUNJI = array();
+$db_RI = array();
 
-  <body>
-  <?php
-    
-    ?>
+while($data = mysqli_fetch_array($result))
+{   
+  array_push($db_ZIPCODE,$data['ZIPCODE']);
+  array_push($db_SIDO, iconv("EUC-KR","UTF-8",$data['SIDO']));
+  array_push($db_GUGUN, iconv("EUC-KR","UTF-8",$data['GUGUN']));
+  array_push($db_DONG, iconv("EUC-KR","UTF-8",$data['DONG']));
+  array_push($db_BUNJI, iconv("EUC-KR","UTF-8",$data['BUNJI']));
+  array_push($db_RI, iconv("EUC-KR","UTF-8",$data['RI']));
 
-    <?php
-      $search_word = $_GET['search'];
-      $jb_conn = mysqli_connect( 'localhost', 'athenathdus', 'x465011', 'korea' );
-      $jb_sql = "SELECT * FROM zipcode LIMIT 100; ";
-      $jb_result = mysqli_query( $jb_conn, $jb_sql );
-     ?>
+  echo(json_encode(array("mode" => $_REQUEST['mode'], "ZIPCODE" => $db_ZIPCODE, "SIDO" => $db_SIDO, "GUGUN" => $db_GUGUN, "DONG" => $db_DONG,"BUNJI" => $db_BUNJI,"RI" => $db_RI)));
+  mysqli_close($conn);
+ }
 
-   
-    <div class="container-fluid text-center" style="margin-top: 250px;">
-        <div id = "content" class="row">
-           <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-            <h2><b>Search Address</b></h2>
-            <input id= "inputbox" type="text" placeholder="" required>
-           </div>
-           <div class="col-sm-3">
-         </div>
-     </div>
-<br>
-    <?php
-      while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
-        echo '<p>' . $jb_row[ 'search' ] . '</p>';
-      }
-    ?>
-<br>
-     <!--footer-->
-     <div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
-  </body>
-</html>
+ 
+?>
