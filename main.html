@@ -1,69 +1,69 @@
-<?php
-$conn = mysqli_connect( 'localhost', 'root', 'tkfkdgo12.', 'new' );
-$sql = "SELECT * FROM zipcode; ";
-$result = mysqli_query( $conn, $sql );
-?>
 <!DOCTYPE>
 <html>
   <head>
       <title>Data Search</title>
-      <meta charset="utf-8">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <style>
-        
-      #footer{
-        position:fixed; 
-        background-color: skyblue;
-        left:0px;
-        bottom:0px; 
-        width:100%; 
-        padding: 35px;
-        font-size:20px;
-        text-align:center;
-      }
-      #inputbox{
-        width: 450px;
-        height: 50px;
-        font-size: 30px;
-      }
-      </style>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+      <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+      <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+      <!--<script type="text/javascript" src="search.js"></script>-->
+  <style>
+     /* #firstbox{
+      background-color: rgb(187, 225, 240);
+      width:100%; 
+      padding: 20px;
+      font-size:20px;
+      text-align:center;
+     } */
+     #footer{
+       position: fixed;
+    background-color: rgb(255, 248, 183);
+    bottom:0px; 
+    width:100%; 
+    padding: 25px;
+    font-size:20px;
+    text-align:center;
+  }
+
+  #inputbox{
+    width: 450px;
+    height: 50px;
+    font-size: 30px;
+  }
+   </style>
+
     </head>
+
  <body>
-    <div class="container-fluid text-center" style="margin-top: 250px;">
+  <!-- <div id="firstbox">2021 Summer intership project</div> -->
+
+   <!------------------------------------------->
+    <div class="container-fluid text-center" style="margin: 130px;">
         <div id = "content" class="row">
            <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
             <form method="POST" action="<?=$_SERVER["PHP_SELF"]?>">
             <h2><b>Search Address</b></h2>
-            <input id= "inputbox" type="text" name="s">
-            <input type= "submit" value='search'>
+            <input id= "inputbox" onkeyup="filter()" type="text" name="s">
+            <div id="result"></div>
           </form>
            </div>
            <div class="col-sm-3">
          </div>
      </div>
-  
+   <!------------------------------------------->
 
-     
-    <?php 
-    $s=$_POST["s"];
-      if($s){
-        $query= "SELECT * FROM zipcode WHERE MATCH(search) AGAINST('".$s."')";
-    
-        $result=mysqli_query($conn, $query);
-        while($data=mysqli_fetch_array($result)){
-            echo "<li> $data[zipcode] $data[sido] $data[gugun] $data[dong] $data[bunji]";
-        }  
-    ?>
-    
-    <? } ?>
-         <!--footer-->
+  <?php
+   include 'data.php';
+  ?>
+  </div>
+   <!-------footer------------->
     <div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
  </body>
 </html>
