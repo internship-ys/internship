@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+  <head>
+      <title>Search Address</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+      <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+      <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+      <script type="text/javascript" src="searchaddress.js"></script>
+
+  <style>
+   
+   #result{
+    margin:auto;
+    width: 450px;
+    text-align: left;
+    font-size: 10pt;
+  } 
+     #footer{
+    position: fixed;
+    background-color: rgb(255, 248, 183);
+    bottom:0px; 
+    width:100%; 
+    padding: 20px;
+    font-size:20px;
+    text-align:center;
+  }
+  #s{
+    width: 450px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  #add{
+    margin:auto;
+    text-align: center;
+    font-weight:bolder;
+    height:60px;
+    width:600px;
+    border-radius: 10px;
+    border-style: dashed;
+    background-color: cornsilk;
+    font-size: 12pt;
+    margin-top: 470px;
+    padding:20px;
+  }
+
+   </style>
+
+
+</head>
+
+ <body>
+    <div class="container-fluid text-center" style="margin: 90px;">
+        <div id = "content" class="row">
+           <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+            <h2><b>Search Address</b></h2>
+            <input id= "s" onkeyup="filter(this.value)" autocomplete="off" type="text" name="s">
+            <div id="result"></div>
+           </div>
+           <div class="col-sm-3">
+         </div>
+         <div id="add"></div>
+     </div>
+  </div>
+
+   <!-------footer------------->
+    <div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
+ </body>
+</html>
