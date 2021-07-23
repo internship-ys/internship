@@ -1,0 +1,82 @@
+<!DOCTYPE>
+<html>
+  <head>
+      <title>Data Search</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+      <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+      <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+      <script type="text/javascript" src="data.js"></script>
+  <style>
+  #footer{
+    position: fixed;
+    background-color: cornsilk;
+    bottom:0px; 
+    width:100%; 
+    padding: 25px;
+    font-size:20px;
+    text-align:center;
+  }
+
+  #s{
+    width: 435px;
+    height: 50px;
+    font-size: 30px;
+  }
+
+  #result{
+    margin:auto;
+    width: 435px;
+    text-align: left;
+    font-size: 11pt;
+    /*background-color: cornsilk;
+    margin-top: 30px;
+    padding:20px;
+    line-height: 30px; */
+  } 
+
+  #add{
+    margin:auto;
+    text-align: center;
+    font-weight:bolder;
+    height:50px;
+    width:600px;
+    border-radius: 10px;
+    border-style: dashed;
+    background-color: cornsilk;
+    font-size: 13pt;
+    margin-top: 600px;
+    padding:12px;
+  }
+   </style>
+
+
+</head>
+  
+ <body>
+
+    <div class="container-fluid text-center" style="margin: 130px;">
+        <div id = "content" class="row">
+           <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+            <!-- <form method="POST" action="<?=$_SERVER["PHP_SELF"]?>"> -->
+            <h2><b>Search Address</b></h2>
+            <input id= "s" onkeyup="filter(this.value)" type="text" name="s" autocomplete="off">
+            <div id="result"></div>
+           </div>
+           <div class="col-sm-3">
+         </div>
+         <div id="add" ></div>
+     </div> 
+  </div>
+
+   <!-------footer------------->
+    <div id="footer">2021 Summer intership project<br>Park so yeon &  Hong ye lim</div>
+ </body>
+</html>
