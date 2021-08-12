@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 
 $data=array();
 
-$conn = mysqli_connect( "localhost", "root", "x465011","korea" );
+$conn = mysqli_connect( "localhost", "root", "-------","korea" );
 
 $query= "SELECT * FROM zipcode WHERE MATCH(search) AGAINST('".$_POST["key"]."*' in boolean mode) limit 10";
 
